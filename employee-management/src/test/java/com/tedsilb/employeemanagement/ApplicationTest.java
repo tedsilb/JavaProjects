@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 
 @DisplayName("Application")
 public class ApplicationTest {
-
   @Test
   @DisplayName("Pointless test")
   void smokeTest() {

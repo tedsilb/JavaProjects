@@ -1,0 +1,2 @@
+# JavaProjects
+Various Java projects.

@@ -4,7 +4,7 @@ package com.tedsilb.employeemanagement;
 import com.google.common.collect.ImmutableMap;
 import java.util.Random;
 
-public class Application {
+public class EmployeeManagement {
   private enum Language { ENGLISH, GERMAN, SPANISH }
   ;
 
@@ -15,7 +15,7 @@ public class Application {
           .put(Language.SPANISH, "Hola Mundo!")
           .build();
 
-  private static String getRandomGreeting() {
+  public static String getRandomGreeting() {
     final Language randomLanguage =
         Language.values()[new Random().nextInt(Language.values().length)];
     return languageToGreetingMap.get(randomLanguage);

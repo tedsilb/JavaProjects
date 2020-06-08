@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option java_package = "com.tedsilb.employeemanagement";
+option java_outer_classname = "Protos";
+
+option optimize_for = SPEED;
+
+message Name {
+  string first = 1;
+  string middle = 2;
+  string last = 3;
+}
+
+message Employee {
+  // employees/{id}, id.length 10, [A-Za-z]
+  string id = 1;
+  Name name = 2;
+}

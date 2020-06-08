@@ -74,7 +74,7 @@ public class DatastoreUtil {
         employees.add(
             Employee.parseFrom(ByteString.copyFromUtf8(queryResults.next().getString("proto"))));
       } catch (InvalidProtocolBufferException e) {
-        // If we get an invalid protobuf, ignore it - nothing we can do.
+        // If we get an invalid proto, ignore it - nothing we can do.
       }
     }
 

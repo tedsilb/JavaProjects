@@ -6,10 +6,8 @@ import com.google.cloud.datastore.Datastore;
 import com.google.common.flogger.FluentLogger;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.tedsilb.employeemanagement.Protos.Employee;
-
 import java.io.IOException;
 import java.util.Scanner;
-
 
 public class Main {
   private static final String SERVICE_ACCOUNT_JSON =

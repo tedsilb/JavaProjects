@@ -59,6 +59,18 @@
       <version>3.12.2</version>
     </dependency>
 
+    <dependency>
+      <groupId>com.google.flogger</groupId>
+      <artifactId>flogger</artifactId>
+      <version>0.5.1</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.google.flogger</groupId>
+      <artifactId>flogger-system-backend</artifactId>
+      <version>0.5.1</version>
+    </dependency>
+
 
     <!-- Test Dependencies -->
     <dependency>

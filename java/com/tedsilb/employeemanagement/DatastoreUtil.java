@@ -48,7 +48,7 @@ public class DatastoreUtil {
 
     datastore.put(
         Entity.newBuilder(datastore.newKeyFactory().setKind("Employee").newKey(employee.getId()))
-            .set("proto", employee.toByteString().toStringUtf8())
+            .set("proto", employee.toString())
             .build());
 
     return employee;

@@ -48,7 +48,7 @@ public class Main {
     try {
       employee = DatastoreUtil.getEmployee(datastore, name);
     } catch (final InvalidProtocolBufferException e) {
-      logger.atSevere().withCause(e);
+      logger.atSevere().withCause(e).log("Invalid protobuf retrieved from database.");
       scan.close();
       return;
     }

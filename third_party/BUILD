@@ -1,13 +1,13 @@
-load("@rules_java//java:defs.bzl", "java_library")
-
 package(default_visibility = ["//visibility:public"])
 
-java_library(
+alias(
     name = "flogger",
-    runtime_deps = [
-        "@maven//:com_google_flogger_flogger",
-        "@maven//:com_google_flogger_flogger_system_backend",
-    ],
+    actual = "@maven//:com_google_flogger_flogger",
+)
+
+alias(
+    name = "flogger_runtime",
+    actual = "@maven//:com_google_flogger_flogger_system_backend",
 )
 
 alias(
@@ -33,4 +33,9 @@ alias(
 alias(
     name = "mockito",
     actual = "@maven//:org_mockito_mockito_core",
+)
+
+alias(
+    name = "protobuf",
+    actual = "@maven//:com_google_protobuf_protobuf_java",
 )

@@ -46,7 +46,7 @@ maven_install(
         maven.artifact(
             group = "com.google.protobuf",
             artifact = "protobuf-java",
-            version = "3.12.2",
+            version = "3.13.0",
         ),
         maven.artifact(
             group = "com.google.truth",
@@ -61,7 +61,7 @@ maven_install(
         maven.artifact(
             group = "org.mockito",
             artifact = "mockito-core",
-            version = "3.3.0",
+            version = "3.5.13",
         ),
     ],
     repositories = [

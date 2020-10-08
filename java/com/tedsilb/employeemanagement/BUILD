@@ -1,5 +1,7 @@
 load("@rules_java//java:defs.bzl", "java_binary", "java_library")
 
+package(default_visibility = ["//javatests/com/tedsilb/employeemanagement:__subpackages__"])
+
 java_library(
     name = "DatastoreUtil",
     srcs = ["DatastoreUtil.java"],

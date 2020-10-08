@@ -17,16 +17,15 @@ load("@rules_jvm_external//:defs.bzl", "maven_install")
 
 maven_install(
     artifacts = [
-        #"com.google.cloud:libraries-bom:3.0.0",
-        #"com.google.oauth-client:google-oauth-client:1.30.4",
         "com.google.cloud:google-cloud-datastore:1.105.0",
         "com.google.guava:guava:29.0-jre",
         "com.google.protobuf:protobuf-java:3.12.2",
-        "org.junit.jupiter:junit-jupiter:5.6.0",
+        "junit:junit:4.13",
         "com.google.flogger:flogger:0.5.1",
         "com.google.flogger:flogger-system-backend:0.5.1",
         "org.mockito:mockito-core:3.3.0",
         "com.google.auth:google-auth-library-oauth2-http:0.21.1",
+        "com.google.truth:truth:1.0.1",
     ],
     repositories = [
         "https://jcenter.bintray.com/",

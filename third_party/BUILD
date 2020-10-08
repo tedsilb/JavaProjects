@@ -26,8 +26,8 @@ alias(
 )
 
 alias(
-    name = "junit_jupiter",
-    actual = "@maven//:org_junit_jupiter_junit_jupiter",
+    name = "junit",
+    actual = "@maven//:junit_junit",
 )
 
 alias(
@@ -38,4 +38,9 @@ alias(
 alias(
     name = "protobuf",
     actual = "@maven//:com_google_protobuf_protobuf_java",
+)
+
+alias(
+    name = "truth",
+    actual = "@maven//:com_google_truth_truth",
 )

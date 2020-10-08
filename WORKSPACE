@@ -14,18 +14,55 @@ http_archive(
 )
 
 load("@rules_jvm_external//:defs.bzl", "maven_install")
+load("@rules_jvm_external//:specs.bzl", "maven")
 
 maven_install(
     artifacts = [
-        "com.google.cloud:google-cloud-datastore:1.105.0",
-        "com.google.guava:guava:29.0-jre",
-        "com.google.protobuf:protobuf-java:3.12.2",
-        "junit:junit:4.13",
-        "com.google.flogger:flogger:0.5.1",
-        "com.google.flogger:flogger-system-backend:0.5.1",
-        "org.mockito:mockito-core:3.3.0",
-        "com.google.auth:google-auth-library-oauth2-http:0.21.1",
-        "com.google.truth:truth:1.0.1",
+        maven.artifact(
+            group = "com.google.auth",
+            artifact = "google-auth-library-oauth2-http",
+            version = "0.21.1",
+        ),
+        maven.artifact(
+            group = "com.google.cloud",
+            artifact = "google-cloud-datastore",
+            version = "1.105.0",
+        ),
+        maven.artifact(
+            group = "com.google.flogger",
+            artifact = "flogger",
+            version = "0.5.1",
+        ),
+        maven.artifact(
+            group = "com.google.flogger",
+            artifact = "flogger-system-backend",
+            version = "0.5.1",
+        ),
+        maven.artifact(
+            group = "com.google.guava",
+            artifact = "guava",
+            version = "29.0-jre",
+        ),
+        maven.artifact(
+            group = "com.google.protobuf",
+            artifact = "protobuf-java",
+            version = "3.12.2",
+        ),
+        maven.artifact(
+            group = "com.google.truth",
+            artifact = "truth",
+            version = "1.0.1",
+        ),
+        maven.artifact(
+            group = "junit",
+            artifact = "junit",
+            version = "4.13",
+        ),
+        maven.artifact(
+            group = "org.mockito",
+            artifact = "mockito-core",
+            version = "3.3.0",
+        ),
     ],
     repositories = [
         "https://jcenter.bintray.com/",

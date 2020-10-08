@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class Main {
   private static final String SERVICE_ACCOUNT_JSON =
-      "../employee-management-279606-65a39db74815.json";
+      "java/com/tedsilb/employeemanagement/employee-management-279606-b5d92b19bba1.json";
 
   private static final String DATASTORE_PROJECT_ID = "employee-management-279606";
 

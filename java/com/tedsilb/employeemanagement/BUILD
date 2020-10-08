@@ -24,8 +24,9 @@ java_library(
 )
 
 java_binary(
-    name = "Main",
+    name = "employeemanagement",
     srcs = ["Main.java"],
+    data = ["employee-management-279606-b5d92b19bba1.json"],
     main_class = "com.tedsilb.employeemanagement.Main",
     runtime_deps = ["//third_party:flogger_runtime"],
     deps = [

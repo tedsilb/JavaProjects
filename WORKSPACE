@@ -21,12 +21,12 @@ maven_install(
         maven.artifact(
             group = "com.google.auth",
             artifact = "google-auth-library-oauth2-http",
-            version = "0.21.1",
+            version = "0.22.0",
         ),
         maven.artifact(
             group = "com.google.cloud",
             artifact = "google-cloud-datastore",
-            version = "1.105.0",
+            version = "1.105.2",
         ),
         maven.artifact(
             group = "com.google.flogger",
@@ -41,27 +41,27 @@ maven_install(
         maven.artifact(
             group = "com.google.guava",
             artifact = "guava",
-            version = "29.0-jre",
+            version = "30.0-jre",
         ),
         maven.artifact(
             group = "com.google.protobuf",
             artifact = "protobuf-java",
-            version = "3.13.0",
+            version = "3.14.0",
         ),
         maven.artifact(
             group = "com.google.truth",
             artifact = "truth",
-            version = "1.0.1",
+            version = "1.1",
         ),
         maven.artifact(
             group = "junit",
             artifact = "junit",
-            version = "4.13",
+            version = "4.13.1",
         ),
         maven.artifact(
             group = "org.mockito",
             artifact = "mockito-core",
-            version = "3.5.13",
+            version = "3.6.28",
         ),
     ],
     repositories = [

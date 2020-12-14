@@ -3,8 +3,6 @@ syntax = "proto3";
 option java_package = "com.tedsilb.employeemanagement";
 option java_outer_classname = "Protos";
 
-option optimize_for = SPEED;
-
 message Name {
   string first = 1;
   string middle = 2;

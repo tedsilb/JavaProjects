@@ -2,6 +2,7 @@ package com.tedsilb.employeemanagement;
 
 public class StringUtil {
   private StringUtil() {}
+
   private final static String ALPHA_OPTIONS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
       + "abcdefghijklmnopqrstuvwxyz";
   private final static String ALPHANUM_OPTIONS = ALPHA_OPTIONS + "0123456789";

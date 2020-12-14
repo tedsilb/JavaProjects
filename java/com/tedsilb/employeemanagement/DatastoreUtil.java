@@ -1,5 +1,7 @@
 package com.tedsilb.employeemanagement;
 
+import static com.google.common.collect.ImmutableList.toImmutableList;
+
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.datastore.Datastore;
 import com.google.cloud.datastore.DatastoreOptions;
@@ -8,12 +10,11 @@ import com.google.cloud.datastore.Key;
 import com.google.cloud.datastore.ProjectionEntity;
 import com.google.cloud.datastore.Query;
 import com.google.cloud.datastore.QueryResults;
-import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableList;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.tedsilb.employeemanagement.Protos.Employee;
 import com.tedsilb.employeemanagement.Protos.Name;
-import java.util.ArrayList;
 
 public class DatastoreUtil {
   private DatastoreUtil() {}
@@ -21,14 +22,16 @@ public class DatastoreUtil {
     return DatastoreOptions.newBuilder()
         .setProjectId(projectId)
         .setCredentials(
-            creds.createScoped(Lists.newArrayList("https://www.googleapis.com/auth/datastore")))
+            creds.createScoped(ImmutableList.of("https://www.googleapis.com/auth/datastore")))
         .build()
         .getService();
   }
 
   protected final static String generateEmployeeId(final Datastore datastore) {
-    ArrayList<String> existingIds = listEmployeeIds(datastore);
-    existingIds.replaceAll(id -> id.replace("employees/", ""));
+    ImmutableList<String> existingIds = listEmployeeIds(datastore)
+                                            .stream()
+                                            .map(id -> id.replace("employees/", ""))
+                                            .collect(toImmutableList());
 
     String newId;
     do {
@@ -62,12 +65,12 @@ public class DatastoreUtil {
     return Employee.parseFrom(ByteString.copyFromUtf8(retrieved));
   }
 
-  protected final static ArrayList<Employee> listEmployees(final Datastore datastore) {
+  protected final static ImmutableList<Employee> listEmployees(final Datastore datastore) {
     // TODO(tedsilb): make this paginated
     QueryResults<ProjectionEntity> queryResults = datastore.run(
         Query.newProjectionEntityQueryBuilder().setKind("Employee").setProjection("proto").build());
 
-    ArrayList<Employee> employees = new ArrayList<Employee>();
+    ImmutableList.Builder<Employee> employees = new ImmutableList.Builder<Employee>();
 
     while (queryResults.hasNext()) {
       try {
@@ -78,20 +81,20 @@ public class DatastoreUtil {
       }
     }
 
-    return employees;
+    return employees.build();
   }
 
-  protected final static ArrayList<String> listEmployeeIds(final Datastore datastore) {
+  protected final static ImmutableList<String> listEmployeeIds(final Datastore datastore) {
     // TODO(tedsilb): make this paginated
     QueryResults<Key> queryResults =
         datastore.run(Query.newKeyQueryBuilder().setKind("Employee").build());
 
-    ArrayList<String> employeeIds = new ArrayList<String>();
+    ImmutableList.Builder<String> employeeIds = new ImmutableList.Builder<String>();
 
     while (queryResults.hasNext()) {
       employeeIds.add(queryResults.next().getName());
     }
 
-    return employeeIds;
+    return employeeIds.build();
   }
 }

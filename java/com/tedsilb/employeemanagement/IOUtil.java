@@ -6,6 +6,7 @@ import java.io.IOException;
 
 public class IOUtil {
   private IOUtil() {}
+
   protected static GoogleCredentials readGoogleCredentialsFromFile(String path) throws IOException {
     return GoogleCredentials.fromStream(new FileInputStream(path));
   }

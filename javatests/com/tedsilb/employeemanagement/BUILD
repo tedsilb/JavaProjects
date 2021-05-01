@@ -7,9 +7,9 @@ java_test(
     main_class = "com.tedsilb.employeemanagement.Main",
     runtime_deps = ["//third_party:flogger_runtime"],
     deps = [
+        "//java/com/tedsilb/employeemanagement",
         "//java/com/tedsilb/employeemanagement:DatastoreUtil",
         "//java/com/tedsilb/employeemanagement:IOUtil",
-        "//java/com/tedsilb/employeemanagement:Main",
         "//java/com/tedsilb/employeemanagement/proto:employee_java_proto",
         "//third_party:flogger",
         "//third_party:google_auth",

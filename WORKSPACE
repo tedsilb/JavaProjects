@@ -54,7 +54,7 @@ maven_install(
         maven.artifact(
             group = "com.google.protobuf",
             artifact = "protobuf-java",
-            version = "3.15.8",
+            version = "3.16.0",
         ),
         maven.artifact(
             group = "com.google.truth",

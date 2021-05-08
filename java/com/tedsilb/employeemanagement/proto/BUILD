@@ -8,6 +8,6 @@ proto_library(
 
 java_proto_library(
     name = "employee_java_proto",
-    visibility = ["//:__subpackages__"],
+    visibility = ["//java/com/tedsilb/employeemanagement:employee_management_package"],
     deps = [":employee_proto"],
 )

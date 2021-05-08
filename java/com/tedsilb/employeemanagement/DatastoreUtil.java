@@ -13,59 +13,52 @@ import com.google.cloud.datastore.QueryResults;
 import com.google.common.collect.ImmutableList;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
-import com.tedsilb.employeemanagement.Protos.Employee;
-import com.tedsilb.employeemanagement.Protos.Name;
+import com.tedsilb.employeemanagement.proto.EmployeeProto.Employee;
+import java.nio.charset.StandardCharsets;
 
-public class DatastoreUtil {
-  private DatastoreUtil() {}
-  protected static Datastore getDatastore(final String projectId, final GoogleCredentials creds) {
+class DatastoreUtil {
+  private static final ImmutableList<String> DATASTORE_SCOPES =
+      ImmutableList.of("https://www.googleapis.com/auth/datastore");
+
+  static Datastore getDatastore(String projectId, GoogleCredentials creds) {
     return DatastoreOptions.newBuilder()
         .setProjectId(projectId)
-        .setCredentials(
-            creds.createScoped(ImmutableList.of("https://www.googleapis.com/auth/datastore")))
+        .setCredentials(creds.createScoped(DATASTORE_SCOPES))
         .build()
         .getService();
   }
 
-  protected final static String generateEmployeeId(final Datastore datastore) {
-    ImmutableList<String> existingIds = listEmployeeIds(datastore)
-                                            .stream()
-                                            .map(id -> id.replace("employees/", ""))
-                                            .collect(toImmutableList());
-
-    String newId;
-    do {
-      newId = StringUtil.getRandomStringAlpha(10);
-    } while (existingIds.contains(newId));
-
-    return "employees/" + newId;
-  }
-
-  protected final static Employee createEmployee(
-      final Datastore datastore, final String first, final String last) {
-    final Employee employee =
+  static Employee createEmployee(Datastore datastore, String first, String last) {
+    Employee employee =
         Employee.newBuilder()
             .setId(generateEmployeeId(datastore))
-            .setName(Name.newBuilder().setFirst(first).setMiddle("").setLast(last).build())
+            .setName(Employee.Name.newBuilder().setFirst(first).setMiddle("").setLast(last).build())
             .build();
 
     datastore.put(
         Entity.newBuilder(datastore.newKeyFactory().setKind("Employee").newKey(employee.getId()))
-            .set("proto", employee.toString())
+            .set("proto", new String(employee.toByteArray(), StandardCharsets.US_ASCII))
             .build());
 
     return employee;
   }
 
-  protected final static Employee getEmployee(final Datastore datastore, final String id)
-      throws InvalidProtocolBufferException {
-    final String retrieved =
-        datastore.get(datastore.newKeyFactory().setKind("Employee").newKey(id)).getString("proto");
-
-    return Employee.parseFrom(ByteString.copyFromUtf8(retrieved));
+  static void deleteEmployee(Datastore datastore, String id) {
+    datastore.delete(datastore.newKeyFactory().setKind("Employee").newKey(id));
   }
 
-  protected final static ImmutableList<Employee> listEmployees(final Datastore datastore) {
+  static Employee getEmployee(Datastore datastore, String id)
+      throws InvalidProtocolBufferException {
+    Key key = datastore.newKeyFactory().setKind("Employee").newKey(id);
+    Entity retrieved = datastore.get(key);
+    if (retrieved == null) {
+      throw new IllegalArgumentException("");
+    }
+
+    return Employee.parseFrom(ByteString.copyFromUtf8(retrieved.getString("proto")));
+  }
+
+  static ImmutableList<Employee> listEmployees(Datastore datastore) {
     // TODO(tedsilb): make this paginated
     QueryResults<ProjectionEntity> queryResults = datastore.run(
         Query.newProjectionEntityQueryBuilder().setKind("Employee").setProjection("proto").build());
@@ -84,12 +77,12 @@ public class DatastoreUtil {
     return employees.build();
   }
 
-  protected final static ImmutableList<String> listEmployeeIds(final Datastore datastore) {
+  static ImmutableList<String> listEmployeeIds(Datastore datastore) {
     // TODO(tedsilb): make this paginated
     QueryResults<Key> queryResults =
         datastore.run(Query.newKeyQueryBuilder().setKind("Employee").build());
 
-    ImmutableList.Builder<String> employeeIds = new ImmutableList.Builder<String>();
+    ImmutableList.Builder<String> employeeIds = ImmutableList.builder();
 
     while (queryResults.hasNext()) {
       employeeIds.add(queryResults.next().getName());
@@ -97,4 +90,20 @@ public class DatastoreUtil {
 
     return employeeIds.build();
   }
+
+  private static String generateEmployeeId(Datastore datastore) {
+    ImmutableList<String> existingIds = listEmployeeIds(datastore)
+                                            .stream()
+                                            .map(ResourceNameUtil::employeeIdFromName)
+                                            .collect(toImmutableList());
+
+    String newId;
+    do {
+      newId = StringUtil.getRandomStringAlpha(10);
+    } while (existingIds.contains(newId));
+
+    return ResourceNameUtil.employeeNameFromId(newId);
+  }
+
+  private DatastoreUtil() {}
 }

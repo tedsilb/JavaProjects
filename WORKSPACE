@@ -4,8 +4,8 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 http_archive(
     name = "rules_python",
-    sha256 = "778197e26c5fbeb07ac2a2c5ae405b30f6cb7ad1f5510ea6fdac03bded96cc6f",
-    url = "https://github.com/bazelbuild/rules_python/releases/download/0.2.0/rules_python-0.2.0.tar.gz",
+    sha256 = "934c9ceb552e84577b0faf1e5a2f0450314985b4d8712b2b70717dc679fdc01b",
+    url = "https://github.com/bazelbuild/rules_python/releases/download/0.3.0/rules_python-0.3.0.tar.gz",
 )
 
 # Maven deps
@@ -29,12 +29,12 @@ maven_install(
         maven.artifact(
             group = "com.google.auth",
             artifact = "google-auth-library-oauth2-http",
-            version = "0.26.0",
+            version = "0.27.0",
         ),
         maven.artifact(
             group = "com.google.cloud",
             artifact = "google-cloud-datastore",
-            version = "1.106.5",
+            version = "1.107.1",
         ),
         maven.artifact(
             group = "com.google.flogger",
@@ -54,7 +54,7 @@ maven_install(
         maven.artifact(
             group = "com.google.protobuf",
             artifact = "protobuf-java",
-            version = "3.17.1",
+            version = "3.17.3",
         ),
         maven.artifact(
             group = "com.google.truth",
@@ -69,7 +69,7 @@ maven_install(
         maven.artifact(
             group = "org.mockito",
             artifact = "mockito-core",
-            version = "3.10.0",
+            version = "3.11.2",
         ),
     ],
     repositories = [

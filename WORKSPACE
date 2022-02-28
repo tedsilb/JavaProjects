@@ -4,15 +4,16 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 http_archive(
     name = "rules_python",
-    sha256 = "934c9ceb552e84577b0faf1e5a2f0450314985b4d8712b2b70717dc679fdc01b",
-    url = "https://github.com/bazelbuild/rules_python/releases/download/0.3.0/rules_python-0.3.0.tar.gz",
+    sha256 = "a30abdfc7126d497a7698c29c46ea9901c6392d6ed315171a6df5ce433aa4502",
+    strip_prefix = "rules_python-0.6.0",
+    url = "https://github.com/bazelbuild/rules_python/archive/0.6.0.tar.gz",
 )
 
 # Maven deps
 
-RULES_JVM_EXTERNAL_TAG = "4.0"
+RULES_JVM_EXTERNAL_TAG = "4.2"
 
-RULES_JVM_EXTERNAL_SHA = "31701ad93dbfe544d597dbe62c9a1fdd76d81d8a9150c2bf1ecf928ecdf97169"
+RULES_JVM_EXTERNAL_SHA = "cd1a77b7b02e8e008439ca76fd34f5b07aecb8c752961f9640dea15e9e5ba1ca"
 
 http_archive(
     name = "rules_jvm_external",
@@ -29,32 +30,32 @@ maven_install(
         maven.artifact(
             group = "com.google.auth",
             artifact = "google-auth-library-oauth2-http",
-            version = "0.27.0",
+            version = "1.5.3",
         ),
         maven.artifact(
             group = "com.google.cloud",
             artifact = "google-cloud-datastore",
-            version = "1.107.1",
+            version = "2.2.4",
         ),
         maven.artifact(
             group = "com.google.flogger",
             artifact = "flogger",
-            version = "0.6",
+            version = "0.7.4",
         ),
         maven.artifact(
             group = "com.google.flogger",
             artifact = "flogger-system-backend",
-            version = "0.6",
+            version = "0.7.4",
         ),
         maven.artifact(
             group = "com.google.guava",
             artifact = "guava",
-            version = "30.1.1-jre",
+            version = "31.0.1-jre",
         ),
         maven.artifact(
             group = "com.google.protobuf",
             artifact = "protobuf-java",
-            version = "3.17.3",
+            version = "3.19.4",
         ),
         maven.artifact(
             group = "com.google.truth",
@@ -69,7 +70,7 @@ maven_install(
         maven.artifact(
             group = "org.mockito",
             artifact = "mockito-core",
-            version = "3.11.2",
+            version = "4.3.1",
         ),
     ],
     repositories = [
@@ -83,11 +84,11 @@ maven_install(
 
 http_archive(
     name = "rules_proto",
-    sha256 = "602e7161d9195e50246177e7c55b2f39950a9cf7366f74ed5f22fd45750cd208",
-    strip_prefix = "rules_proto-97d8af4dc474595af3900dd85cb3a29ad28cc313",
+    sha256 = "66bfdf8782796239d3875d37e7de19b1d94301e8972b3cbd2446b332429b4df1",
+    strip_prefix = "rules_proto-4.0.0",
     urls = [
-        "https://mirror.bazel.build/github.com/bazelbuild/rules_proto/archive/97d8af4dc474595af3900dd85cb3a29ad28cc313.tar.gz",
-        "https://github.com/bazelbuild/rules_proto/archive/97d8af4dc474595af3900dd85cb3a29ad28cc313.tar.gz",
+        "https://mirror.bazel.build/github.com/bazelbuild/rules_proto/archive/refs/tags/4.0.0.tar.gz",
+        "https://github.com/bazelbuild/rules_proto/archive/refs/tags/4.0.0.tar.gz",
     ],
 )
 

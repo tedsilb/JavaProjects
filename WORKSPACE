@@ -4,9 +4,9 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 http_archive(
     name = "rules_python",
-    sha256 = "a30abdfc7126d497a7698c29c46ea9901c6392d6ed315171a6df5ce433aa4502",
-    strip_prefix = "rules_python-0.6.0",
-    url = "https://github.com/bazelbuild/rules_python/archive/0.6.0.tar.gz",
+    sha256 = "cdf6b84084aad8f10bf20b46b77cb48d83c319ebe6458a18e9d2cebf57807cdd",
+    strip_prefix = "rules_python-0.8.1",
+    url = "https://github.com/bazelbuild/rules_python/archive/refs/tags/0.8.1.tar.gz",
 )
 
 # Maven deps
@@ -28,49 +28,49 @@ load("@rules_jvm_external//:specs.bzl", "maven")
 maven_install(
     artifacts = [
         maven.artifact(
-            group = "com.google.auth",
             artifact = "google-auth-library-oauth2-http",
-            version = "1.5.3",
+            group = "com.google.auth",
+            version = "1.7.0",
         ),
         maven.artifact(
-            group = "com.google.cloud",
             artifact = "google-cloud-datastore",
-            version = "2.2.4",
+            group = "com.google.cloud",
+            version = "2.7.0",
         ),
         maven.artifact(
-            group = "com.google.flogger",
             artifact = "flogger",
-            version = "0.7.4",
-        ),
-        maven.artifact(
             group = "com.google.flogger",
-            artifact = "flogger-system-backend",
             version = "0.7.4",
         ),
         maven.artifact(
-            group = "com.google.guava",
+            artifact = "flogger-system-backend",
+            group = "com.google.flogger",
+            version = "0.7.4",
+        ),
+        maven.artifact(
             artifact = "guava",
-            version = "31.0.1-jre",
+            group = "com.google.guava",
+            version = "31.1-jre",
         ),
         maven.artifact(
-            group = "com.google.protobuf",
             artifact = "protobuf-java",
-            version = "3.19.4",
+            group = "com.google.protobuf",
+            version = "3.21.1",
         ),
         maven.artifact(
-            group = "com.google.truth",
             artifact = "truth",
+            group = "com.google.truth",
             version = "1.1.3",
         ),
         maven.artifact(
-            group = "junit",
             artifact = "junit",
+            group = "junit",
             version = "4.13.2",
         ),
         maven.artifact(
-            group = "org.mockito",
             artifact = "mockito-core",
-            version = "4.3.1",
+            group = "org.mockito",
+            version = "4.6.1",
         ),
     ],
     repositories = [

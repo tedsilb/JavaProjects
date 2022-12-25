@@ -1,26 +1,25 @@
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
-# This isn't used, but for some reason the build fails if this isn't loaded
-
-http_archive(
-    name = "rules_python",
-    sha256 = "a3a6e99f497be089f81ec082882e40246bfd435f52f4e82f37e89449b04573f6",
-    strip_prefix = "rules_python-0.10.2",
-    url = "https://github.com/bazelbuild/rules_python/archive/refs/tags/0.10.2.tar.gz",
-)
-
 # Maven deps
 
-RULES_JVM_EXTERNAL_TAG = "4.2"
+RULES_JVM_EXTERNAL_TAG = "4.5"
 
-RULES_JVM_EXTERNAL_SHA = "cd1a77b7b02e8e008439ca76fd34f5b07aecb8c752961f9640dea15e9e5ba1ca"
+RULES_JVM_EXTERNAL_SHA = "b17d7388feb9bfa7f2fa09031b32707df529f26c91ab9e5d909eb1676badd9a6"
 
 http_archive(
     name = "rules_jvm_external",
     sha256 = RULES_JVM_EXTERNAL_SHA,
     strip_prefix = "rules_jvm_external-%s" % RULES_JVM_EXTERNAL_TAG,
-    url = "https://github.com/bazelbuild/rules_jvm_external/archive/%s.zip" % RULES_JVM_EXTERNAL_TAG,
+    url = "https://github.com/bazelbuild/rules_jvm_external/archive/refs/tags/%s.zip" % RULES_JVM_EXTERNAL_TAG,
 )
+
+load("@rules_jvm_external//:repositories.bzl", "rules_jvm_external_deps")
+
+rules_jvm_external_deps()
+
+load("@rules_jvm_external//:setup.bzl", "rules_jvm_external_setup")
+
+rules_jvm_external_setup()
 
 load("@rules_jvm_external//:defs.bzl", "maven_install")
 load("@rules_jvm_external//:specs.bzl", "maven")
@@ -30,12 +29,12 @@ maven_install(
         maven.artifact(
             artifact = "google-auth-library-oauth2-http",
             group = "com.google.auth",
-            version = "1.8.1",
+            version = "1.14.0",
         ),
         maven.artifact(
             artifact = "google-cloud-datastore",
             group = "com.google.cloud",
-            version = "2.10.1",
+            version = "2.13.0",
         ),
         maven.artifact(
             artifact = "flogger",
@@ -55,7 +54,7 @@ maven_install(
         maven.artifact(
             artifact = "protobuf-java",
             group = "com.google.protobuf",
-            version = "3.21.4",
+            version = "3.21.12",
         ),
         maven.artifact(
             artifact = "truth",
@@ -70,13 +69,12 @@ maven_install(
         maven.artifact(
             artifact = "mockito-core",
             group = "org.mockito",
-            version = "4.6.1",
+            version = "4.10.0",
         ),
     ],
     repositories = [
         "https://maven.google.com",
         "https://repo1.maven.org/maven2",
-        "https://jcenter.bintray.com/",
     ],
 )
 

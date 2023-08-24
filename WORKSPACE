@@ -29,12 +29,12 @@ maven_install(
         maven.artifact(
             artifact = "google-auth-library-oauth2-http",
             group = "com.google.auth",
-            version = "1.14.0",
+            version = "1.19.0",
         ),
         maven.artifact(
             artifact = "google-cloud-datastore",
             group = "com.google.cloud",
-            version = "2.13.0",
+            version = "2.17.0",
         ),
         maven.artifact(
             artifact = "flogger",
@@ -49,7 +49,7 @@ maven_install(
         maven.artifact(
             artifact = "guava",
             group = "com.google.guava",
-            version = "31.1-jre",
+            version = "32.1.2-jre",
         ),
         maven.artifact(
             artifact = "protobuf-java",
@@ -59,7 +59,7 @@ maven_install(
         maven.artifact(
             artifact = "truth",
             group = "com.google.truth",
-            version = "1.1.3",
+            version = "1.1.5",
         ),
         maven.artifact(
             artifact = "junit",
@@ -69,7 +69,7 @@ maven_install(
         maven.artifact(
             artifact = "mockito-core",
             group = "org.mockito",
-            version = "4.10.0",
+            version = "5.5.0",
         ),
     ],
     repositories = [
@@ -82,10 +82,10 @@ maven_install(
 
 http_archive(
     name = "rules_proto",
-    sha256 = "e017528fd1c91c5a33f15493e3a398181a9e821a804eb7ff5acdd1d2d6c2b18d",
-    strip_prefix = "rules_proto-4.0.0-3.20.0",
+    sha256 = "dc3fb206a2cb3441b485eb1e423165b231235a1ea9b031b4433cf7bc1fa460dd",
+    strip_prefix = "rules_proto-5.3.0-21.7",
     urls = [
-        "https://github.com/bazelbuild/rules_proto/archive/refs/tags/4.0.0-3.20.0.tar.gz",
+        "https://github.com/bazelbuild/rules_proto/archive/refs/tags/5.3.0-21.7.tar.gz",
     ],
 )
 

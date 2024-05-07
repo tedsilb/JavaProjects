@@ -1,46 +1,48 @@
 package(default_visibility = ["//visibility:public"])
 
+load("@rules_jvm_external//:defs.bzl", "artifact")
+
 alias(
     name = "flogger",
-    actual = "@maven//:com_google_flogger_flogger",
+    actual = artifact("com.google.flogger:flogger"),
 )
 
 alias(
     name = "flogger_runtime",
-    actual = "@maven//:com_google_flogger_flogger_system_backend",
+    actual = artifact("com.google.flogger:flogger_system_backend"),
 )
 
 alias(
     name = "google_auth",
-    actual = "@maven//:com_google_auth_google_auth_library_oauth2_http",
+    actual = artifact("com.google.auth:google_auth_library_oauth2_http"),
 )
 
 alias(
     name = "google_cloud_datastore",
-    actual = "@maven//:com_google_cloud_google_cloud_datastore",
+    actual = artifact("com.google.cloud:google_cloud_datastore"),
 )
 
 alias(
     name = "guava",
-    actual = "@maven//:com_google_guava_guava",
+    actual = artifact("com.google.guava:guava"),
 )
 
 alias(
     name = "junit",
-    actual = "@maven//:junit_junit",
+    actual = artifact("junit:junit"),
 )
 
 alias(
     name = "mockito",
-    actual = "@maven//:org_mockito_mockito_core",
+    actual = artifact("org.mockito.mockito:core"),
 )
 
 alias(
     name = "protobuf",
-    actual = "@maven//:com_google_protobuf_protobuf_java",
+    actual = artifact("com.google.protobuf:protobuf_java"),
 )
 
 alias(
     name = "truth",
-    actual = "@maven//:com_google_truth_truth",
+    actual = artifact("com.google.truth:truth"),
 )

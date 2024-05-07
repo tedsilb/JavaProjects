@@ -1,0 +1,62 @@
+module(name = "com_github_tedsilb_javaprojects", version = "0.0.1")
+
+bazel_dep(name = "rules_jvm_external", version = "6.1")
+
+maven = use_extension("@rules_jvm_external//:extensions.bzl", "maven")
+
+maven.artifact(
+    artifact = "google-auth-library-oauth2-http",
+    group = "com.google.auth",
+    version = "1.19.0",
+)
+maven.artifact(
+    artifact = "google-cloud-datastore",
+    group = "com.google.cloud",
+    version = "2.17.0",
+)
+maven.artifact(
+    artifact = "flogger",
+    group = "com.google.flogger",
+    version = "0.7.4",
+)
+maven.artifact(
+    artifact = "flogger-system-backend",
+    group = "com.google.flogger",
+    version = "0.7.4",
+)
+maven.artifact(
+    artifact = "guava",
+    group = "com.google.guava",
+    version = "32.1.2-jre",
+)
+maven.artifact(
+    artifact = "protobuf-java",
+    group = "com.google.protobuf",
+    version = "3.21.12",
+)
+maven.artifact(
+    artifact = "truth",
+    group = "com.google.truth",
+    version = "1.1.5",
+)
+maven.artifact(
+    artifact = "junit",
+    group = "junit",
+    version = "4.13.2",
+)
+maven.artifact(
+    artifact = "mockito-core",
+    group = "org.mockito",
+    version = "5.5.0",
+)
+
+maven.install(
+    repositories = [
+        "https://maven.google.com",
+        "https://repo1.maven.org/maven2",
+    ],
+    lock_file = "//:maven_install.json",
+)
+
+use_repo(maven, "maven", "unpinned_maven")
+

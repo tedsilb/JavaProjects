@@ -16,3 +16,6 @@ Projects are built using [Bazel](https://bazel.build).
   - `bazel run java/com/tedsilb/{project} {args}`
 - For example:
   - `bazel run java/com/tedsilb/employeemanagement`
+
+To repin deps:
+  - `REPIN=1 bazel run @maven//:pin`

@@ -1,18 +1,18 @@
 module(name = "com_github_tedsilb_javaprojects", version = "0.0.1")
 
-bazel_dep(name = "rules_jvm_external", version = "6.5")
+bazel_dep(name = "rules_jvm_external", version = "6.6")
 
 maven = use_extension("@rules_jvm_external//:extensions.bzl", "maven")
 
 maven.artifact(
     artifact = "google-auth-library-oauth2-http",
     group = "com.google.auth",
-    version = "1.29.0",
+    version = "1.30.0",
 )
 maven.artifact(
     artifact = "google-cloud-datastore",
     group = "com.google.cloud",
-    version = "2.24.1",
+    version = "2.24.3",
 )
 maven.artifact(
     artifact = "flogger",
@@ -32,7 +32,7 @@ maven.artifact(
 maven.artifact(
     artifact = "protobuf-java",
     group = "com.google.protobuf",
-    version = "4.28.3",
+    version = "4.29.0",
 )
 maven.artifact(
     artifact = "truth",

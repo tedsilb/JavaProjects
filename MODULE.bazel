@@ -1,40 +1,40 @@
 module(name = "com_github_tedsilb_javaprojects", version = "0.0.1")
 
-bazel_dep(name = "rules_java", version = "8.11.0")
-bazel_dep(name = "protobuf", version = "30.2", repo_name = "com_google_protobuf")
-bazel_dep(name = "rules_jvm_external", version = "6.7")
+bazel_dep(name = "rules_java", version = "8.15.2")
+bazel_dep(name = "protobuf", version = "32.0", repo_name = "com_google_protobuf")
+bazel_dep(name = "rules_jvm_external", version = "6.8")
 
 maven = use_extension("@rules_jvm_external//:extensions.bzl", "maven")
 
 maven.artifact(
     artifact = "google-auth-library-oauth2-http",
     group = "com.google.auth",
-    version = "1.30.0",
+    version = "1.39.0",
 )
 maven.artifact(
     artifact = "google-cloud-datastore",
     group = "com.google.cloud",
-    version = "2.24.3",
+    version = "2.31.4",
 )
 maven.artifact(
     artifact = "flogger",
     group = "com.google.flogger",
-    version = "0.8",
+    version = "0.9",
 )
 maven.artifact(
     artifact = "flogger-system-backend",
     group = "com.google.flogger",
-    version = "0.8",
+    version = "0.9",
 )
 maven.artifact(
     artifact = "guava",
     group = "com.google.guava",
-    version = "33.3.1-jre",
+    version = "33.4.8-jre",
 )
 maven.artifact(
     artifact = "protobuf-java",
     group = "com.google.protobuf",
-    version = "4.29.0",
+    version = "4.32.0",
 )
 maven.artifact(
     artifact = "truth",
@@ -49,7 +49,7 @@ maven.artifact(
 maven.artifact(
     artifact = "mockito-core",
     group = "org.mockito",
-    version = "5.14.2",
+    version = "5.19.0",
 )
 
 maven.install(

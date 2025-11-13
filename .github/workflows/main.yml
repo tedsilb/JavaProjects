@@ -23,7 +23,7 @@ jobs:
           key: bazel
 
       - name: Run java checkstyle
-        uses: nikitasavinov/checkstyle-action@0.6.0
+        uses: nikitasavinov/checkstyle-action@188701a3b260206eeb3048e2b6e2af2c47d0876f
 
       - run: bazel build ...
       - run: bazel test ...

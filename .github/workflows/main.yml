@@ -25,7 +25,7 @@ jobs:
           repository-cache: true 
 
       - name: Run java checkstyle
-        uses: nikitasavinov/checkstyle-action@188701a3b260206eeb3048e2b6e2af2c47d0876f
+        uses: nikitasavinov/checkstyle-action@a6342ca4696cf4f4859d78ba03fc8f3ee9bed294
 
       - run: bazel build ...
       - run: bazel test ...

@@ -1,1 +1,11 @@
 common --enable_bzlmod
+
+# Pin to remote JDK 25. rules_java 9.9.0 only provides remote JDKs up to 25,
+# but the local JDK here is 27. Without this, Bazel picks local_jdk (27) as
+# the target runtime while javac itself runs on remotejdk_25, which fails with:
+# "The Java 25 runtime used to run javac is not recent enough to compile for
+# the Java 27 runtime". Pinning makes the build hermetic regardless of local JDK.
+build --java_runtime_version=remotejdk_25
+build --tool_java_runtime_version=remotejdk_25
+build --java_language_version=25
+build --tool_java_language_version=25
